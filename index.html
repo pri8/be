@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <style type="text/css"> 
+    * { box-sizing: border-box }
+    div {
+      display: flex;
+      padding: 0.25rem;
+      align-items: center;
+      align-content: center;
+      justify-content: space-between;
+    }
+    input {
+      margin: 0.25rem;
+      padding: 0.25rem;
+      min-width: 3rem;
+      font-size: larger;
+      border: none;
+      border-bottom: 2px solid #0074D9;
+      outline: none;
+      flex: 1 3rem;
+    }
+    button {
+      margin: 1rem;
+      padding: 0.75rem;
+      min-width: 3rem;
+      border-radius: 2.5px;
+      background-color: transparent;
+      outline: none;
+      border: none;
+      font-weight: 700;
+      font-size: larger;
+      color: white;
+      text-transform: capitalize;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button.go { background-color: #3D9970 }
+    button.go::before { content: "\25B6" }
+    button.stop { background-color: #FF4136 }
+    button.stop::before { content: "\25FC" }
+    /*button.copy { background-color: #39CCCC }*/
+    button.copy::before { content: "\1F4CB" }
+    #indicator {      
+      min-height: 3rem;
+      border-bottom: 1px solid silver;
+      padding-bottom: 1rem;
+    }
+    .cont {
+      flex-direction: column;
+      min-height: 3rem;
+      min-width: 3rem;
+      /*flex: 1 auto;*/
+      /*border: 2px solid #FF851B;*/
+      /*border-radius: 0.25rem;*/
+    }
+    .cont > *:first-child {
+      font-size: smaller;
+      color: #aaa;
+      margin-bottom: 0.5rem
+    }
+    .cont > *:last-child { font-size: larger }
+    .divider {
+      margin: auto 1rem;
+      min-height: 3rem;
+      border: 1px solid #001f3f;
+      padding: 0;
+    }
+    #pagination {
+      word-break: break-word;
+      flex: 1 auto;
+    }
+    #errorMessage {
+      color: #FF4136;
+      font-size: larger;
+    }
+    .loading:after {
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: bottom;
+      animation: ellipsis steps(4, end) 2500ms infinite;
+      content: "\2026"; /* ascii code for the ellipsis character */
+      width: 0px;
+    }
+    table * {
+      border: 0.5px solid silver;
+    }
+
+    @keyframes ellipsis {
+      to {
+        width: 20px;    
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <input id="url" class="input" placeholder="url">
+    <input id="token" class="input" placeholder="token">
+    <input id="location" class="input" placeholder="location to search">
+    <button id="button" class="go"></button>
+  </div>
+  <div id="indicator">
+    <div id="trip" class="cont"><span>Trip</span><span>0</span></div>
+    <div class="divider"></div>
+    <div id="time" class="cont"><span>Time</span><span>00:00</span></div>
+    <div class="divider"></div>
+    <div id="itemCount" class="cont"><span>Items</span><span>0</span></div>
+    <div class="divider"></div>
+    <div id="pagination"></div>
+    <div class="divider"></div>
+    <button id="copy" class="copy"></button>
+
+  </div>
+  <div id="errorMessage"></div>
+  <table id="result" cellpadding="0" cellspacing="0"></table>
+  <!-- <div id="result" class="m0 p0 col12 border-none borderTop"></div> -->
+  <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>
